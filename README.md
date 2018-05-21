@@ -1,2 +1,9 @@
-# alpine_apache2_php56_apc
-Alpine + apache2 + php5.6 + apc, Compressed 20MB
+# Alpine + apache2 + php56 + apc
+
+## work path 
+  * /var/www/localhost
+
+## Run
+  * docker container run -d samuelsantosdev/php56_apc:1.5
+
+Enjoy :B !
