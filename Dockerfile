@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.7
 COPY "httpd-foreground.sh" "/"
 MAINTAINER samuelsantosdev@gmail.com
 #install apache2 and php5.6 with essentials modules
@@ -19,14 +19,11 @@ RUN apk add --no-cache apache2 \
     php5-curl \
     php5-zlib \
     curl \
-
     #config apache2
     && sed -i 's/^#ServerName www\.example\.com\:80/ServerName 127\.0\.0\.1\:80/' /etc/apache2/httpd.conf \
-    && mkdir -p /run/apache2 && chmod +x /httpd-foreground.sh && 
-   
+    && mkdir -p /run/apache2 && chmod +x /httpd-foreground.sh && \
     #clear cache apk
-    && rm -rf /var/cache/apk/* \
-
+    rm -rf /var/cache/apk/* \
     #rewrite apache2 module
     && sed -i '/LoadModule rewrite_module/s/^#//g' /etc/apache2/httpd.conf \
     && { \
